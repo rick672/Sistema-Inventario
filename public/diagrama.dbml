@@ -1,0 +1,5 @@
+Table Categoria {
+  id int [pk, increment]
+  nombre varchar(100)
+  descripcion text
+}
