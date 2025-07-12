@@ -30,7 +30,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                    <table class="table table-hover">
+                    <table id="dataTable" class="table table-hover table-sm">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -66,10 +66,66 @@
 @stop
 
 @section('css')
-    {{-- Add here extra stylesheets --}}
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <style>
+        #dataTable_wrapper .dt-buttons {
+            background-color: transparent;
+            box-shadow: none;
+            border: none;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        #dataTable_wrapper .btn {
+            color: #fff;
+            border-radius: 4px;
+            padding: 5px 15px;
+            font-size: 14px;
+        }
+
+        .btn-danger { background-color: #dc3545; border: none; }
+        .btn-success { background-color: #28a745; border: none; }
+        .btn-info { background-color: #17a2b8; border: none; }
+        .btn-warning { background-color: #ffc107; color: #212529; border: none; }
+        .btn-default { background-color: #6c757d; color: #212529; border: none; }
+
+    </style>
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script> 
+        $(function() {
+            $('#dataTable').DataTable({
+                "pageLength": 10,
+                "language": {
+                    "emptyTable": "No hay datos disponibles en esta tabla",
+                    "info": "Mostrando _START_ a _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando 0 a 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron resultados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                "responsive": true,
+                "lengthChange": true,
+                "autoWidth": false,
+                buttons: [
+                    { text: '<i class="fas fa-copy"></i> Copiar', extend: 'copy', className: 'btn btn-default' },
+                    { text: '<i class="fas fa-file-pdf"></i> PDF', extend: 'pdf', className: 'btn btn-danger' },
+                    { text: '<i class="fas fa-file-csv"></i> CSV', extend: 'csv', className: 'btn btn-info' },
+                    { text: '<i class="fas fa-file-excel"></i> EXCEL', extend: 'excel', className: 'btn btn-success' },
+                    { text: '<i class="fas fa-print"></i> Imprimir', extend: 'print', className: 'btn btn-warning' },
+                ]
+            }).buttons().container().appendTo('#dataTable_wrapper .row:eq(0)');
+        });
+    </script>
 @stop
