@@ -11,7 +11,6 @@
             <li class="breadcrumb-item active" aria-current="page">Listado de Categorias</li>
         </ol>
     </nav>
-    <hr>
 @stop
 
 @section('content')
@@ -46,10 +45,19 @@
                                     <td>{{ $categoria->nombre }}</td>
                                     <td>{{ $categoria->descripcion }}</td>
                                     <td>
-                                        <a href="{{ url('/admin/categorias/' . $categoria->id . '/edit') }}" class="btn btn-primary">
+                                        <a 
+                                            href="{{ url('/admin/categoria/' . $categoria->id) }}" class="btn btn-info"
+                                        >
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a 
+                                            href="{{ url('/admin/categoria/' . $categoria->id . '/edit') }}" class="btn btn-primary"
+                                        >
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{ url('/admin/categorias/' . $categoria->id . '/delete') }}" class="btn btn-danger">
+                                        <a 
+                                            href="{{ url('/admin/categoria/' . $categoria->id . '/delete') }}" class="btn btn-danger"
+                                        >
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
