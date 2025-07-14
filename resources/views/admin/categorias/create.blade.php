@@ -25,12 +25,16 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                    <form action="">
+                    <form action="{{ url('/admin/categorias/create') }}" method="post">
+                        @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="nombre">Nombre <b>(*)</b></label>
                                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                                    @error('nombre')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
