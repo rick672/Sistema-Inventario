@@ -4,58 +4,54 @@
 {{-- @section('title', 'Categorias') --}}
 
 @section('content_header')
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('/admin/categorias') }}">Categorias</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Datos de la Categoria</li>
-        </ol>
-    </nav>
+    <div class="d-flex justify-content-between align-items-end mb-2">
+        <h1 class="m-0 text-dark">Ver Categoría</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent p-0 m-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/admin') }}"><i class="fas fa-home"></i> Inicio</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/admin/categorias') }}">Categorías</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Ver</li>
+            </ol>
+        </nav>
+    </div>
     <hr>
 @stop
 
 @section('content')
-    <div class="row flex justify-content-center">
-        <div class="col-md-6">
-            <div class="card card-info">
-                <div class="card-header">
-                    <h3 class="card-title"><b>Datos de la Categoria</b></h3>
-
-                    <!-- /.card-tools -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-gradient-info">
+                    <h3 class="card-title text-white m-0">
+                        <i class="fas fa-info-circle mr-2"></i> <b>Detalles de la Categoría</b>
+                    </h3>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body" style="display: block;">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="nombre">Nombre <b>(*)</b></label>
-                                <input type="text" class="form-control" value="{{ $categoria->nombre }}" id="nombre" name="nombre" placeholder="Nombre" readonly>
-                                @error('nombre')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="descripcion">Descripción</label>
-                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" readonly>{{ $categoria->descripcion }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <a href="{{ url('/admin/categorias') }}" class="btn btn-secondary">Volver</a>
-                            </div>
-                        </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="nombre">Nombre <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control bg-light" value="{{ $categoria->nombre }}" id="nombre" name="nombre" readonly>
                     </div>
 
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control bg-light" id="descripcion" name="descripcion" rows="3" readonly>{{ $categoria->descripcion }}</textarea>
+                    </div>
+
+                    <div class="form-group text-right mt-4">
+                        <a href="{{ url('/admin/categorias') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left mr-1"></i> Volver
+                        </a>
+                    </div>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-          </div>
+        </div>
     </div>
 @stop
+
 
 @section('css')
 
