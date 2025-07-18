@@ -311,14 +311,14 @@ return [
         [
             'text' => 'Sucursales',
             'url' => 'admin/sucursales',
-            'icon' => 'fas fa-fw fa-list',
-            'classes' => 'bg-green text-white',
+            'icon' => 'fas fa-fw fa-building',
+            'active' => ['admin/sucursales*'],
         ],
         [
             'text' => 'Categorias',
             'url' => 'admin/categorias',
             'icon' => 'fas fa-fw fa-list',
-            'classes' => 'bg-green text-white',
+            'active' => ['admin/categorias*'],
         ],
         
     ],

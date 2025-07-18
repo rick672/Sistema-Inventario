@@ -35,7 +35,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="nombre">Nombre <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la categoría" required>
+                            <input type="text" value="{{ old('nombre') }}" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la categoría" required>
                             @error('nombre')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -43,7 +43,7 @@
 
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Ingrese una descripción (opcional)"></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Ingrese una descripción (opcional)">{{ old('descripcion') }}</textarea>
                         </div>
 
                         <div class="row">

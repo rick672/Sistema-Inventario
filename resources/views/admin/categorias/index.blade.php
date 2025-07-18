@@ -77,7 +77,7 @@
                                                 function preguntar{{ $categoria->id }}(e) {
                                                     e.preventDefault();
                                                     Swal.fire({
-                                                    title: "¿Estás seguro?",
+                                                    title: "¿Desea eliminar este registro?",
                                                     text: "Esta acción no se puede deshacer.",
                                                     icon: "question",
                                                     showCancelButton: true,
