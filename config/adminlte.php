@@ -309,6 +309,12 @@ return [
         // Sidebar items:       
         ['header' => 'Menu Principal'],
         [
+            'text' => 'Sucursales',
+            'url' => 'admin/sucursales',
+            'icon' => 'fas fa-fw fa-list',
+            'classes' => 'bg-green text-white',
+        ],
+        [
             'text' => 'Categorias',
             'url' => 'admin/categorias',
             'icon' => 'fas fa-fw fa-list',
