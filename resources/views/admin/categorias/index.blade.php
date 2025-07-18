@@ -49,7 +49,7 @@
                         <tbody>
                             @foreach($categorias as $categoria)
                                 <tr>
-                                    <td>{{ $categoria->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $categoria->nombre }}</td>
                                     <td>{{ $categoria->descripcion }}</td>
                                     <td>
@@ -63,11 +63,36 @@
                                         >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <a 
-                                            href="{{ url('/admin/categoria/' . $categoria->id . '/delete') }}" class="btn btn-danger"
-                                        >
-                                            <i class="fas fa-trash"></i>
-                                        </a>
+                                        <form action="{{ url('/admin/categoria/' . $categoria->id ) }}" method="POST" id="miformulario{{ $categoria->id }}" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button 
+                                                type="submit" 
+                                                class="btn btn-danger"
+                                                onclick="preguntar{{ $categoria->id }}(event)"
+                                            >
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <script>
+                                                function preguntar{{ $categoria->id }}(e) {
+                                                    e.preventDefault();
+                                                    Swal.fire({
+                                                    title: "¿Estás seguro?",
+                                                    text: "Esta acción no se puede deshacer.",
+                                                    icon: "question",
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: "#3085d6",
+                                                    cancelButtonColor: "#d33",
+                                                    confirmButtonText: "Si, eliminar!",
+                                                    cancelButtonText: "No, no eliminar",
+                                                    }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        document.getElementById('miformulario{{ $categoria->id }}').submit();
+                                                    }
+                                                    });
+                                                }
+                                            </script>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
