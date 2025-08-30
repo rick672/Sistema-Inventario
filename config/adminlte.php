@@ -320,6 +320,12 @@ return [
             'icon' => 'fas fa-fw fa-list',
             'active' => ['admin/categorias*'],
         ],
+        [
+            'text' => 'Productos',
+            'url' => 'admin/productos',
+            'icon' => 'fas fa-fw fa-box',
+            'active' => ['admin/productos*'],
+        ]
         
     ],
 
