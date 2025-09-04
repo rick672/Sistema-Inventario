@@ -318,7 +318,7 @@ return [
             'text' => 'Categorias',
             'url' => 'admin/categorias',
             'icon' => 'fas fa-fw fa-list',
-            'active' => ['admin/categorias*'],
+            'active' => ['admin/categoria*'],
         ],
         [
             'text' => 'Productos',
