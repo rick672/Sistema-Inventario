@@ -26,7 +26,7 @@
         <div class="col-md-12">
             <div class="card card-outline card-primary">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h3 class="card-title mb-0"><b>Categorias</b></h3>
+                    <h3 class="card-title mb-0"><b>Categorias registradas</b></h3>
 
                     <div class="card-tools position-absolute" style="right: 1rem;">
                     <a href="{{ url('/admin/categorias/create') }}" class="btn btn-primary">

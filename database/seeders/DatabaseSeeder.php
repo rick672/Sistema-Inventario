@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\Proveedor;
 use App\Models\Sucursal;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,8 +24,9 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        Categoria::factory(50)->create();
-        Sucursal::factory(50)->create();
-        Producto::factory(200)->create();
+        Categoria::factory(30)->create();
+        Sucursal::factory(20)->create();
+        Producto::factory(15)->create();
+        Proveedor::factory(20)->create();
     }
 }

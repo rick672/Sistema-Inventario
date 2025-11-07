@@ -325,6 +325,12 @@ return [
             'url' => 'admin/productos',
             'icon' => 'fas fa-fw fa-box',
             'active' => ['admin/productos*'],
+        ],
+        [
+            'text' => 'Proveedores',
+            'url' => 'admin/proveedores',
+            'icon' => 'fas fa-fw fa-truck',
+            'active' => ['admin/proveedores*'],
         ]
         
     ],
