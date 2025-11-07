@@ -46,11 +46,10 @@
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Imagen</th>
-                                <th>Precio Compra</th>
+                                {{-- <th>Precio Compra</th> --}}
                                 <th>Precio Venta</th>
                                 <th>Stock Mínimo</th>
-                                <th>Stock Máximo</th>
-                                <th>Unidad de Medida</th>
+                                {{-- <th>Stock Máximo</th> --}}
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
@@ -59,16 +58,22 @@
                             @foreach($productos as $producto)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $producto->categoria_id }}</td>
+                                    <td>{{ $producto->categoria->nombre }}</td>
                                     <td>{{ $producto->codigo }}</td>
                                     <td>{{ $producto->nombre }}</td>
-                                    <td>{{ $producto->descripcion }}</td>
-                                    <td>{{ $producto->imagen }}</td>
-                                    <td>{{ $producto->precio_compra }}</td>
+                                    <td>{!! $producto->descripcion !!}</td>
+                                    <td class="text-center align-middle">
+                                        <img 
+                                            src="{{ asset('storage/' . $producto->imagen) }}"
+                                            alt="{{ $producto->nombre }}" 
+                                            class="img-fluid rounded-lg"
+                                            style="width: 125px; height: 125px; object-fit: cover;"
+                                        >
+                                    </td>
+                                    {{-- <td>{{ $producto->precio_compra }}</td> --}}
                                     <td>{{ $producto->precio_venta }}</td>
                                     <td>{{ $producto->stock_minimo }}</td>
-                                    <td>{{ $producto->stock_maximo }}</td>
-                                    <td>{{ $producto->unidad_medida }}</td>
+                                    {{-- <td>{{ $producto->stock_maximo }}</td> --}}
                                     <td>
                                         @if ($producto->estado=='1')
                                             <span class="badge bg-success">Activo</span>
