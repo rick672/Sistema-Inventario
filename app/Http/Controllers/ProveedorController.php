@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProveedorController extends Controller
 {
@@ -74,13 +75,20 @@ class ProveedorController extends Controller
     public function update(Request $request, $id)
     {
         // return response()->json($request->all());
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'empresa' => 'required|string|max:50',
             'direccion' => 'required|string|max:150',
             'nombre' => 'required|string|max:100',
             'telefono' => 'required|string|max:30',
             'email' => 'nullable|email|unique:proveedors,email,'. $id,
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput()
+            ->with('modal_id', $id);
+        }
 
         $proveedor = Proveedor::findOrFail($id);
         $proveedor->empresa = $request->empresa;

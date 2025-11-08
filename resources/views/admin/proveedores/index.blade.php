@@ -141,9 +141,6 @@
                                                         <button type="button" class="btn bg-secondary btn-block" data-dismiss="modal">
                                                             <i class="fas fa-arrow-left"></i> Cerrar
                                                         </button>
-                                                        {{-- <a href="{{ url('/admin/categorias') }}" class="btn btn-outline-secondary btn-block">
-                                                            <i class="fas fa-arrow-left"></i> Cancelar
-                                                        </a> --}}
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <button type="submit" class="btn bg-success btn-block">
@@ -257,15 +254,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-                                        {{-- <a 
-                                            href="{{ url('/admin/productos/' . $proveedor->id . '/edit') }}" 
-                                            class="btn btn-primary"
-                                        >
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a> --}}
 
 
                                         <!-- Modal para editar un proveedor -->
@@ -391,9 +379,7 @@
                                             </div>
                                         </div>
 
-
-
-
+                                        {{-- Modal para eliminar un proveedor --}}
                                         <form 
                                             action="{{ url('/admin/proveedor/' . $proveedor->id ) }}" 
                                             method="POST" id="miformulario{{ $proveedor->id }}" 
@@ -515,6 +501,16 @@
 @stop
 
 @section('js')
+    @if( $errors->any() )
+        <script>
+            @if (session('modal_id'))
+                let modalID = "{{ session('modal_id') }}";
+                $('#ModalEdit' + modalID).modal('show');
+            @else
+                $('#ModalCreate').modal('show');
+            @endif
+        </script>
+    @endif
     <script> 
         $(function() {
             $('#dataTable').DataTable({
