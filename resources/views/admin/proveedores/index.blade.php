@@ -125,7 +125,7 @@
                                                     <div class="col col-12 col-md-6 col-lg-4">
                                                         <div class="form-group">
                                                             {{-- Telefono --}}
-                                                            <label for="email">Email <span class="text-danger">*</span></label>
+                                                            <label for="email">Email </label>
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -187,12 +187,88 @@
                                     <td>{{ $proveedor->telefono }}</td>
                                     <td>{{ $proveedor->email }}</td>
                                     <td>
-                                        <a 
+                                        {{-- <a 
                                             href="{{ url('/admin/productos/' . $proveedor->id) }}" 
                                             class="btn btn-info"
                                         >
                                             <i class="fas fa-eye"></i>
-                                        </a>
+                                        </a> --}}
+
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalShow{{ $proveedor->id }}">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div 
+                                            class="modal fade" 
+                                            id="ModalShow{{ $proveedor->id }}" 
+                                            tabindex="-1" 
+                                            aria-labelledby="exampleModalLabel" 
+                                            aria-hidden="true"
+                                        >
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-secondary">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Detalle Proveedor</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container-fluid">    
+                                                            <div class="row">
+                                                                <div class="col col-12 col-lg-4">
+                                                                    <div class="form-group">
+                                                                        {{-- Empresa --}}
+                                                                        <label for="empresa">Empresa </label>
+                                                                        <p>{{ $proveedor->empresa }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-12 col-lg-8">
+                                                                    <div class="form-group">
+                                                                        {{-- Dirección --}}
+                                                                        <label for="direccion">Dirección </label>
+                                                                        <p>{{ $proveedor->direccion }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-12 col-md-6 col-lg-4">
+                                                                    <div class="form-group">
+                                                                        {{-- Nombre --}}
+                                                                        <label for="nombre">Nombre </label>
+                                                                        <p>{{ $proveedor->nombre }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-12 col-md-6 col-lg-4">
+                                                                    <div class="form-group">
+                                                                        {{-- Telefono --}}
+                                                                        <label for="telefono">Telefono </label>
+                                                                        <p>{{ $proveedor->telefono }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-12 col-md-6 col-lg-4">
+                                                                    <div class="form-group">
+                                                                        {{-- Telefono --}}
+                                                                        <label for="email">Email </label>
+                                                                        <p>{{ $proveedor->email }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row justify-end">
+                                                                <div class="col-12 mb-2">
+                                                                    <button type="button" class="btn btn-outline-secondary btn-block" data-dismiss="modal">
+                                                                        <i class="fas fa-arrow-left"></i> Cerrar
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                         <a 
                                             href="{{ url('/admin/productos/' . $proveedor->id . '/edit') }}" 
                                             class="btn btn-primary"
