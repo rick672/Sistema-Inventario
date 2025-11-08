@@ -395,7 +395,7 @@
 
 
                                         <form 
-                                            action="{{ url('/admin/productos/' . $proveedor->id ) }}" 
+                                            action="{{ url('/admin/proveedor/' . $proveedor->id ) }}" 
                                             method="POST" id="miformulario{{ $proveedor->id }}" 
                                             class="d-inline"
                                         >
