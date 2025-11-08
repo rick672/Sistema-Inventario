@@ -32,11 +32,8 @@
                         class="card-tools position-absolute" 
                         style="right: 1rem;"
                     >
-                        {{-- <a href="{{ url('/admin/productos/create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Nuevo Producto
-                        </a> --}}
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCreate">
+                        <!-- Modal para crear un nuevo proveedor -->
+                        <button type="button" class="btn bg-gradient-success" data-toggle="modal" data-target="#ModalCreate">
                             <i class="fas fa-plus"></i> Nuevo Proveedor
                         </button>
 
@@ -50,7 +47,7 @@
                         >
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
-                                    <div class="modal-header bg-info">
+                                    <div class="modal-header bg-gradient-success">
                                         <h5 class="modal-title" id="exampleModalLabel">Crear Proveedor</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -141,15 +138,15 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-12 col-sm-6 mb-2">
-                                                        <button type="button" class="btn btn-outline-secondary btn-block" data-dismiss="modal">
-                                                            <i class="fas fa-arrow-left"></i> Cancelar
+                                                        <button type="button" class="btn bg-secondary btn-block" data-dismiss="modal">
+                                                            <i class="fas fa-arrow-left"></i> Cerrar
                                                         </button>
                                                         {{-- <a href="{{ url('/admin/categorias') }}" class="btn btn-outline-secondary btn-block">
                                                             <i class="fas fa-arrow-left"></i> Cancelar
                                                         </a> --}}
                                                     </div>
                                                     <div class="col-12 col-sm-6">
-                                                        <button type="submit" class="btn btn-outline-success btn-block">
+                                                        <button type="submit" class="btn bg-success btn-block">
                                                             <i class="fas fa-save"></i> Guardar
                                                         </button>
                                                     </div>
@@ -161,7 +158,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.card-tools -->
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">
@@ -187,14 +183,9 @@
                                     <td>{{ $proveedor->telefono }}</td>
                                     <td>{{ $proveedor->email }}</td>
                                     <td>
-                                        {{-- <a 
-                                            href="{{ url('/admin/productos/' . $proveedor->id) }}" 
-                                            class="btn btn-info"
-                                        >
-                                            <i class="fas fa-eye"></i>
-                                        </a> --}}
+                                        {{-- Modal para ver detalle del proveedor --}}
 
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalShow{{ $proveedor->id }}">
+                                        <button type="button" class="btn bg-gradient-info" data-toggle="modal" data-target="#ModalShow{{ $proveedor->id }}">
                                             <i class="fas fa-eye"></i>
                                         </button>
 
@@ -208,7 +199,7 @@
                                         >
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
-                                                    <div class="modal-header bg-secondary">
+                                                    <div class="modal-header bg-gradient-secondary">
                                                         <h5 class="modal-title" id="exampleModalLabel">Detalle Proveedor</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -256,7 +247,7 @@
                                                             <hr>
                                                             <div class="row justify-end">
                                                                 <div class="col-12 mb-2">
-                                                                    <button type="button" class="btn btn-outline-secondary btn-block" data-dismiss="modal">
+                                                                    <button type="button" class="btn bg-secondary btn-block" data-dismiss="modal">
                                                                         <i class="fas fa-arrow-left"></i> Cerrar
                                                                     </button>
                                                                 </div>
@@ -269,12 +260,140 @@
 
 
 
-                                        <a 
+                                        {{-- <a 
                                             href="{{ url('/admin/productos/' . $proveedor->id . '/edit') }}" 
                                             class="btn btn-primary"
                                         >
                                             <i class="fas fa-pencil-alt"></i>
-                                        </a>
+                                        </a> --}}
+
+
+                                        <!-- Modal para editar un proveedor -->
+                                        <button type="button" class="btn bg-gradient-primary" data-toggle="modal" data-target="#ModalEdit{{ $proveedor->id }}">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div 
+                                            class="modal fade" 
+                                            id="ModalEdit{{ $proveedor->id }}" 
+                                            tabindex="-1" 
+                                            aria-labelledby="exampleModalLabel" 
+                                            aria-hidden="true"
+                                        >
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-gradient-primary">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Editar Proveedor</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container-fluid">
+                                                            <form action="{{ url('/admin/proveedor/'. $proveedor->id) }}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            {{-- Empresa --}}
+                                                                            <label for="empresa">Empresa <span class="text-danger">*</span></label>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i class="fas fa-building"></i></span>
+                                                                                </div>
+                                                                                <input type="text" value="{{ old('empresa', $proveedor->empresa) }}" class="form-control" id="empresa" name="empresa" placeholder="Ingrese el nombre de la empresa" required>
+                                                                            </div>
+                                                                            @error('empresa')
+                                                                                <small class="form-text text-danger">{{ $message }}</small>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            {{-- Dirección --}}
+                                                                            <label for="direccion">Dirección <span class="text-danger">*</span></label>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                                                </div>
+                                                                                <input type="text" value="{{ old('direccion', $proveedor->direccion) }}" class="form-control" id="direccion" name="direccion" placeholder="Ingrese la dirección de la empresa" required>
+                                                                            </div>
+                                                                            @error('direccion')
+                                                                                <small class="form-text text-danger">{{ $message }}</small>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col col-12 col-md-6 col-lg-4">
+                                                                        <div class="form-group">
+                                                                            {{-- Nombre --}}
+                                                                            <label for="nombre">Nombre <span class="text-danger">*</span></label>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                                                </div>
+                                                                                <input type="text" value="{{ old('nombre', $proveedor->nombre) }}" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre del proveedor" required>
+                                                                            </div>
+                                                                            @error('nombre')
+                                                                                <small class="form-text text-danger">{{ $message }}</small>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col col-12 col-md-6 col-lg-4">
+                                                                        <div class="form-group">
+                                                                            {{-- Telefono --}}
+                                                                            <label for="telefono">Telefono <span class="text-danger">*</span></label>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                                                </div>
+                                                                                <input type="text" value="{{ old('telefono', $proveedor->telefono) }}" class="form-control" id="telefono" name="telefono" placeholder="Ingrese el telefono del proveedor" required>
+                                                                            </div>
+                                                                            @error('telefono')
+                                                                                <small class="form-text text-danger">{{ $message }}</small>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col col-12 col-md-6 col-lg-4">
+                                                                        <div class="form-group">
+                                                                            {{-- Telefono --}}
+                                                                            <label for="email">Email </label>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                                                                </div>
+                                                                                <input type="email" value="{{ old('email', $proveedor->email) }}" class="form-control" id="email" name="email" placeholder="Ingrese el email del proveedor" required>
+                                                                            </div>
+                                                                            @error('email')
+                                                                                <small class="form-text text-danger">{{ $message }}</small>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-12 col-md-6 mb-2">
+                                                                        <button type="button" class="btn bg-secondary btn-block" style="font-size: 15px" data-dismiss="modal">
+                                                                            <i class="fas fa-arrow-left"></i> Cerrar
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <button type="submit" class="btn bg-success btn-block" style="font-size: 15px">
+                                                                            <i class="fas fa-pencil-alt"></i> Actualizar
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
                                         <form 
                                             action="{{ url('/admin/productos/' . $proveedor->id ) }}" 
                                             method="POST" id="miformulario{{ $proveedor->id }}" 

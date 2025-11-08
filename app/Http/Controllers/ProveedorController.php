@@ -71,9 +71,28 @@ class ProveedorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(Request $request, $id)
     {
-        //
+        // return response()->json($request->all());
+        $request->validate([
+            'empresa' => 'required|string|max:50',
+            'direccion' => 'required|string|max:150',
+            'nombre' => 'required|string|max:100',
+            'telefono' => 'required|string|max:30',
+            'email' => 'nullable|email|unique:proveedors,email,'. $id,
+        ]);
+
+        $proveedor = Proveedor::findOrFail($id);
+        $proveedor->empresa = $request->empresa;
+        $proveedor->direccion = $request->direccion;
+        $proveedor->nombre = $request->nombre;
+        $proveedor->telefono = $request->telefono;
+        $proveedor->email = $request->email;
+        $proveedor->save();
+
+        return redirect()->route('proveedores.index')
+        ->with('message', 'Proveedor actualizado correctamente')
+        ->with('status', 'success');
     }
 
     /**
