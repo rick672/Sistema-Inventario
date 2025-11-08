@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Proveedor extends Model
 {
@@ -19,4 +20,9 @@ class Proveedor extends Model
         'telefono',
         'email',
     ];
+
+    public function lotes(): HasMany
+    {
+        return $this->hasMany(Lote::class);
+    }
 }
