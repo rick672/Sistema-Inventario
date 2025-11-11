@@ -39,6 +39,15 @@ class ItemsCompra extends Component
         $this->cantidad = 1;
     }
 
+    protected $rules = 
+    [
+        'productoId' => 'required',
+        'cantidad' => 'required|numeric|min:1',
+        'precioUnitario' => 'required|numeric|min:1',
+        'codigoLote' => 'required',
+        'fechaVencimiento' => 'nullable|date',
+    ];
+
     public function agregarItems(){
         $this->validate();
 
@@ -78,6 +87,12 @@ class ItemsCompra extends Component
             DB::commit();
             $this->cargarDatosCompra();
 
+            $this->dispatch(
+                'mostrar-alert',
+                icon: 'success',
+                message: 'Producto agregado con éxito!',
+            );
+
 
         } catch (Exception $e) {
             DB::rollBack();
@@ -91,6 +106,11 @@ class ItemsCompra extends Component
 
     public function prueba()
     {
+        $this->dispatch(
+            'mostrar-alert',
+            icon: 'success',
+            message: '¡Se agregó con éxito!',
+        );
         $this->cantidad = $this->cantidad + 1;
     }
 }

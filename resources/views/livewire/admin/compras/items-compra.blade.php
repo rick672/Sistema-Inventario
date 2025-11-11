@@ -3,24 +3,24 @@
     <div class="row">
         <div class="col-12 col-md-8 col-lg-4">
             <div class="form-group">
-                {{-- Nombre --}}
+                {{-- Producto --}}
                 <label for="producto_id">Producto <span class="text-danger">*</span></label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
-                    <select name="" id="" class="form-control select2" required>
+                    <select name="" id="" wire:model="productoId" class="form-control select2" required>
                         <option value="">Seleccione una opción</option>
                         @foreach($productos as $producto)
                             <option 
-                            value="{{ $producto->id }}" {{ old('producto_id') == $producto->id ? 'selected' : '' }}
+                                value="{{ $producto->id }}"
                             >
-                            {{ $producto->codigo. ' - ' .$producto->nombre }}
+                                {{ $producto->codigo. ' - ' .$producto->nombre }}
                             </option>
                         @endforeach
                     </select>
                 </div>
-                @error('producto_id')
+                @error('productoId')
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -34,15 +34,14 @@
                         <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
                     <input
+                        wire:model="codigoLote"
                         type="text" 
-                        value="{{ old('lote') }}" 
                         class="form-control" 
-                        id="lote" name="lote" 
                         placeholder="Ingrese el lote"
                         required
                     >
                 </div>
-                @error('lote')
+                @error('codigoLote')
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -56,12 +55,11 @@
                         <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
                     <input 
+                        wire:model="cantidad"
                         min="1"
                         style="text-align: center"
-                        type="number" 
-                        value="{{ old('cantidad') }}" 
+                        type="number"  
                         class="form-control" 
-                        id="cantidad" name="codigo" 
                         placeholder="Ingrese la cantidad"
                         required
                     >
@@ -80,17 +78,16 @@
                         <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
                     <input 
+                        wire:model="precioUnitario"
                         min="1"
                         style="text-align: center"
-                        type="number" 
-                        value="{{ old('precio_unitario') }}" 
+                        type="number"
                         class="form-control" 
-                        id="precio_unitario" name="precio_unitario" 
                         placeholder="Ingrese el precio"
                         required
                     >
                 </div>
-                @error('precio_unitario')
+                @error('precioUnitario')
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -104,12 +101,13 @@
                         <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
                     <input 
+                        wire:model="fechaVencimiento"
                         type="date"
                         value="{{ old('fecha_vencimiento') }}" 
                         class="form-control" 
                     >
                 </div>
-                @error('fecha_vencimiento')
+                @error('fechaVencimiento')
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -121,12 +119,23 @@
         </div>
         <div class="col col-12 col-md-6 col-lg-3">
             <div class="form-group">
-                <button type="submit" class="btn bg-gradient-info btn-block" wire:click="prueba">
+                <button type="submit" class="btn bg-gradient-info btn-block" wire:click="agregarItems">
                     <i class="fas fa-plus"></i> Agregar Producto
                 </button>
             </div>
         </div>
     </div>
-    <hr>
-    Cantidad: {{ $cantidad }}
+
+    <div 
+        x-data 
+        x-on:mostrar-alert.window="
+            Swal.fire({
+                icon: $event.detail.icon,
+                text: $event.detail.message,
+                showConfirmButton: false,
+                timer: 2000
+            })
+        "
+    >
+    </div>
 </div>

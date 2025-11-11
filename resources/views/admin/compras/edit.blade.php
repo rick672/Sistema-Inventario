@@ -81,7 +81,7 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <livewire:admin.compras.items-compra />
+                    <livewire:admin.compras.items-compra :compra="$compra" />
                 </div>
             </div>
         </div>
@@ -89,7 +89,6 @@
 @stop
 
 @section('css')
-    @livewireStyles
     <style>
         .select2-container .select2-selection--single {
             height: 35.67px !important;
@@ -102,11 +101,12 @@
             /* width: calc(100% - 38px) !important;  */
         }
     </style>
+    @livewireStyles
 @stop
 
 @section('js')
-    @livewireScripts
     <script>
         $('.select2').select2();
     </script>
+    @livewireScripts
 @stop
