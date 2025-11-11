@@ -9,7 +9,12 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
-                    <select name="" id="" wire:model="productoId" class="form-control select2" required>
+                    <select 
+                        id="productoId" 
+                        wire:model.lazy="productoId"
+                        class="form-control select2" 
+                        required
+                    >
                         <option value="">Seleccione una opción</option>
                         @foreach($productos as $producto)
                             <option 
@@ -19,6 +24,30 @@
                             </option>
                         @endforeach
                     </select>
+                    {{-- Para usar wire:model.lazy debe usar x-data y x-init --}}
+                    {{-- <div x-data="{ productoId: $wire.entangle('productoId') }">
+                        <select 
+                            x-model="productoId" 
+                            x-init="$nextTick(() => {
+                                $($el).select2({
+                                    placeholder: 'Seleccione una opción',
+                                    allowClear: false
+                                });
+                                
+                                $($el).on('change', function(e) {
+                                    productoId = $(this).val();
+                                });
+                            })"
+                            class="form-control" 
+                            required>
+                            <option value="">Seleccione una opción</option>
+                            @foreach($productos as $producto)
+                                <option value="{{ $producto->id }}">
+                                    {{ $producto->codigo. ' - ' .$producto->nombre }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div> --}}
                 </div>
                 @error('productoId')
                     <small class="form-text text-danger">{{ $message }}</small>
@@ -138,4 +167,56 @@
         "
     >
     </div>
+    
+    @if ($compra->detalleCompras->count() > 0)
+        <div class="card-body table-responsive">
+            <table id="dataTable" class="table table-striped table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Producto</th>
+                        <th>Lote</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Subtotal</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($compra->detalleCompras as $detalle)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $detalle->producto->nombre }}</td>
+                            <td>{{ $detalle->lote->codigo_lote }}</td>
+                            <td>{{ $detalle->cantidad }}</td>
+                            <td>{{ $detalle->precio_unitario }}</td>
+                            <td>{{ $detalle->subtotal }}</td>
+                            <td class="text-center align-middle">
+                                <img 
+                                    src="{{ asset('storage/' . $detalle->producto->imagen) }}"
+                                    alt="{{ $detalle->producto->nombre }}"
+                                    class="img-fluid rounded-lg"
+                                    style="width: 80px; height: 80px; object-fit: cover;"
+                                >
+                            </td>
+                            <td>
+                                <button 
+                                    type="submit" 
+                                    class="btn btn-danger"
+                                    wire:click="borrarItem({{ $detalle->id }})"
+                                >
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <h2>Total: {{ $totalCompra }} Bs</h2>
+        </div>
+    @else
+        <p class="text-center">No hay productos en esta compra.</p>
+    @endif
 </div>

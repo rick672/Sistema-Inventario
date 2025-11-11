@@ -42,7 +42,7 @@
                         <div class="col col-6 col-md-6 col-lg-2">
                             <div class="form-group">
                                 {{-- Fecha de Compra --}}
-                                <label for="fecha">Fecha de Compra <span class="text-danger">*</span></label>
+                                <label for="fecha">Fecha Compra <span class="text-danger">*</span></label>
                                 <p>{{ $compra->fecha }}</p>
                             </div>
                         </div>
@@ -53,18 +53,11 @@
                                 <p>{{ $compra->observaciones }}</p>
                             </div>
                         </div>
-                        <div class="col col-6 col-md-6 col-lg-2">
+                        <div class="col col-6 col-md-6 col-lg-4">
                             <div class="form-group">
                                 {{-- Estado --}}
                                 <label for="estado">Estado de la compra</label>
                                 <p>{{ $compra->estado }}</p>
-                            </div>
-                        </div>
-                        <div class="col col-6 col-md-6 col-lg-2">
-                            <div class="form-group">
-                                {{-- Estado --}}
-                                <label for="total">Total de la compra</label>
-                                <p>{{ $compra->total }} .Bs</p>
                             </div>
                         </div>
                     </div>

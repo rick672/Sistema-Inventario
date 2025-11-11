@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Compras;
 
 use App\Models\Compra;
+use App\Models\DetalleCompra;
 use App\Models\Lote;
 use App\Models\Producto;
 use Exception;
@@ -112,5 +113,32 @@ class ItemsCompra extends Component
             message: '¡Se agregó con éxito!',
         );
         $this->cantidad = $this->cantidad + 1;
+    }
+
+    public function borrarItem($id)
+    {
+        DB::beginTransaction();
+        try {
+            $detalle = DetalleCompra::find($id);
+            $detalle->delete();
+
+            // Recalcular total de la compra
+            $this->compra->total = $this->compra->detalleCompras->sum('subtotal');
+            $this->compra->save();
+
+            DB::commit();
+            $this->cargarDatosCompra();
+
+            $this->dispatch(
+                'mostrar-alert',
+                icon: 'success',
+                message: 'Producto borrado exitosamente!',
+            );
+
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd('Error al borrar producto', $e);
+        }
     }
 }
