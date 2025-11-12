@@ -32,32 +32,32 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col col-6 col-md-6 col-lg-2">
+                        <div class="col col-12 col-sm-6 col-md-4 col-lg-2">
                             <div class="form-group">
                                 {{-- Proveedor --}}
-                                <label for="proveedor_id">Proveedor <span class="text-danger">*</span></label>
+                                <label for="proveedor_id">Proveedor</label>
                                 <p>{{ $compra->proveedor->nombre }}</p>
                             </div>
                         </div>
-                        <div class="col col-6 col-md-6 col-lg-2">
+                        <div class="col col-12 col-sm-6 col-md-4 col-lg-2">
                             <div class="form-group">
                                 {{-- Fecha de Compra --}}
-                                <label for="fecha">Fecha Compra <span class="text-danger">*</span></label>
+                                <label for="fecha">Fecha Compra</label>
                                 <p>{{ $compra->fecha }}</p>
                             </div>
                         </div>
-                        <div class="col col-12 col-md-12 col-lg-4">
+                        <div class="col col-12 col-md-4 col-lg-2">
+                            <div class="form-group">
+                                {{-- Estado --}}
+                                <label for="estado">Estado Compra</label>
+                                <p>{{ $compra->estado }}</p>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-6">
                             <div class="form-group">
                                 {{-- Observaciones --}}
                                 <label for="observaciones">Observaciones</label>
                                 <p>{{ $compra->observaciones }}</p>
-                            </div>
-                        </div>
-                        <div class="col col-6 col-md-6 col-lg-4">
-                            <div class="form-group">
-                                {{-- Estado --}}
-                                <label for="estado">Estado de la compra</label>
-                                <p>{{ $compra->estado }}</p>
                             </div>
                         </div>
                     </div>
@@ -98,8 +98,8 @@
 @stop
 
 @section('js')
-    <script>
+    {{-- <script>
         $('.select2').select2();
-    </script>
+    </script> --}}
     @livewireScripts
 @stop

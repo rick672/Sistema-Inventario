@@ -44,10 +44,20 @@ class ItemsCompra extends Component
     [
         'productoId' => 'required',
         'cantidad' => 'required|numeric|min:1',
-        'precioUnitario' => 'required|numeric|min:1',
+        'precioCompra' => 'required|numeric|min:1',
         'codigoLote' => 'required',
         'fechaVencimiento' => 'nullable|date',
     ];
+
+    public function updatedproductoId($valor){
+        $producto = Producto::find($valor);
+        if($producto){
+            $this->precioCompra = $producto->precio_compra;
+            $this->precioVenta = $producto->precio_venta;
+        } else {
+            $this->reset(['precioCompra', 'precioVenta']);
+        }
+    }
 
     public function agregarItems(){
         $this->validate();
@@ -77,8 +87,8 @@ class ItemsCompra extends Component
                 'producto_id' => $producto->id,
                 'lote_id' => $loteId,
                 'cantidad' => $this->cantidad,
-                'precio_unitario' => $this->precioUnitario,
-                'subtotal' => $this->cantidad * $this->precioUnitario,
+                'precio_unitario' => $this->precioCompra,
+                'subtotal' => $this->cantidad * $this->precioCompra,
             ]);
 
             // Recalcular total de la compra
@@ -119,8 +129,15 @@ class ItemsCompra extends Component
     {
         DB::beginTransaction();
         try {
+            // Buscar el detalle de la compra
             $detalle = DetalleCompra::find($id);
+            $lote_id = $detalle->lote_id;
+            
             $detalle->delete();
+
+            // Borrar el lote
+            $lote = Lote::find($lote_id);
+            $lote->delete();
 
             // Recalcular total de la compra
             $this->compra->total = $this->compra->detalleCompras->sum('subtotal');
