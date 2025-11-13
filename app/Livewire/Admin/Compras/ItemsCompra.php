@@ -45,6 +45,7 @@ class ItemsCompra extends Component
         'productoId' => 'required',
         'cantidad' => 'required|numeric|min:1',
         'precioCompra' => 'required|numeric|min:1',
+        'precioVenta' => 'required|numeric|min:1',
         'codigoLote' => 'required',
         'fechaVencimiento' => 'nullable|date',
     ];
