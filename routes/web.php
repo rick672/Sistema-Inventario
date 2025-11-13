@@ -48,5 +48,5 @@ Route::delete('/admin/proveedor/{id}', [App\Http\Controllers\ProveedorController
 Route::get('/admin/compras', [App\Http\Controllers\CompraController::class, 'index'])->name('compras.index')->middleware('auth');
 Route::get('/admin/compras/create', [App\Http\Controllers\CompraController::class, 'create'])->name('compras.create')->middleware('auth');
 Route::post('/admin/compras/create', [App\Http\Controllers\CompraController::class, 'store'])->name('compras.store')->middleware('auth');
-// edit 
 Route::get('/admin/compra/{id}/edit', [App\Http\Controllers\CompraController::class, 'edit'])->name('compras.edit')->middleware('auth');
+Route::get('/admin/compra/{compra}/enviar-correo', [App\Http\Controllers\CompraController::class, 'enviarCorreo'])->name('compras.enviarCorreo')->middleware('auth');
