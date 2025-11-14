@@ -339,10 +339,24 @@ return [
             'active' => ['admin/compra*'],
         ],
         [
-            'text' => 'Lotes',
-            'url' => 'admin/lotes',
-            'icon' => 'fas fa-fw fa-boxes',
-            'active' => ['admin/lote*'],
+            'text' => 'Inventario',
+            'url' => 'admin/inventario',
+            'icon' => 'fas fa-fw fa-box',
+            'active' => ['admin/inventario*'],
+            'submenu' => [
+                [
+                    'text' => 'Lotes',
+                    'url' => 'admin/lotes',
+                    'icon' => 'fas fa-fw fa-boxes',
+                    'active' => ['admin/lote*'],
+                ],
+                [
+                    'text' => 'Sucursales por Lotes',
+                    'url' => 'admin/sucursales_por_lotes',
+                    'icon' => 'fas fa-fw fa-building',
+                    'active' => ['admin/sucursales_por_lotes*'],
+                ],
+            ],
         ],
         
     ],

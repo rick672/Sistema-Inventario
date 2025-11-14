@@ -60,3 +60,6 @@ Route::get('/admin/lote/{id}', [App\Http\Controllers\LoteController::class, 'sho
 Route::get('/admin/lote/{id}/edit', [App\Http\Controllers\LoteController::class, 'edit'])->name('lotes.edit')->middleware('auth');
 Route::put('/admin/lote/{id}', [App\Http\Controllers\LoteController::class, 'update'])->name('lotes.update')->middleware('auth');
 Route::delete('/admin/lote/{id}', [App\Http\Controllers\LoteController::class, 'destroy'])->name('lotes.destroy')->middleware('auth');
+
+// Inventario por lotes
+Route::get('/admin/sucursales_por_lotes', [App\Http\Controllers\InventarioSucursalLoteController::class, 'index'])->name('sucursales_por_lotes.index')->middleware('auth');

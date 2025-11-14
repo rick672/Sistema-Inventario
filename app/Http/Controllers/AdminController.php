@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Compra;
+use App\Models\Lote;
 use App\Models\Producto;
 use App\Models\Proveedor;
 use App\Models\Sucursal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -19,6 +21,7 @@ class AdminController extends Controller
         $total_productos = Producto::count();
         $total_proveedores = Proveedor::count();
         $total_compras = Compra::count();
-        return view('admin.index', compact('total_sucursales', 'total_categorias', 'total_productos', 'total_proveedores', 'total_compras'));
+        $total_lotes_vencidos = Lote::where('fecha_vencimiento', '<', Carbon::now())->count();
+        return view('admin.index', compact('total_sucursales', 'total_categorias', 'total_productos', 'total_proveedores', 'total_compras', 'total_lotes_vencidos'));
     }
 }

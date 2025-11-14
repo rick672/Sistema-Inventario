@@ -41,11 +41,12 @@
                                 <th>Fecha de Entrada</th>
                                 <th>Fecha de Vencimiento</th>
                                 <th>Cantidad Actual</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($lotes as $lote)
-                                <tr>
+                                <tr class="{{ $lote->is_expired ? 'table-danger' : ''  }}">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $lote->codigo_lote }}</td>
                                     <td>{{ $lote->producto->nombre }}</td>
@@ -53,6 +54,13 @@
                                     <td>{{ $lote->fecha_entrada }}</td>
                                     <td>{{ $lote->fecha_vencimiento }}</td>
                                     <td>{{ $lote->cantidad_actual }}</td>
+                                    <td>
+                                        @if($lote->is_expired)
+                                            <span class="badge badge-danger">Vencido</span>
+                                        @else
+                                            <span class="badge badge-success">Vigente</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

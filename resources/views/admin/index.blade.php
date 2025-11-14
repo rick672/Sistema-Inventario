@@ -85,6 +85,21 @@
                 </div>
             </div>
         </div>
+        {{-- Card de lotes vencidos --}}
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+                <a href="{{ url('/admin/lotes') }}">
+                    <span class="info-box-icon">
+                    <img src="{{ url('/img/alert.gif') }}" alt="" class="rounded">
+                    </span>
+                </a>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Lotes Vencidos</span>
+                    <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_lotes_vencidos }}</h2></span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-3 col-6">
