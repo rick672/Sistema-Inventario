@@ -10,37 +10,80 @@
     <p>Admin.</p>
     <hr>
     <div class="row">
+        {{-- Card de sucursales --}}
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-gradient-info">
-            <a href="{{ url('/admin/sucursales') }}">
-                <span class="info-box-icon">
-                <img src="{{ url('/img/building.gif') }}" alt="" class="rounded">
-                </span>
-            </a>
+                <a href="{{ url('/admin/sucursales') }}">
+                    <span class="info-box-icon">
+                    <img src="{{ url('/img/building.gif') }}" alt="" class="rounded">
+                    </span>
+                </a>
 
-            <div class="info-box-content">
-                <span class="info-box-text">Sucursales</span>
-                <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_sucursales }}</h2></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Sucursales</span>
+                    <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_sucursales }}</h2></span>
+                </div>
             </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
         </div>
+        {{-- Card de categorias --}}
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-            <a href="{{ url('/admin/categorias') }}">
-                <span class="info-box-icon">
-                <img src="{{ url('/img/folders.gif') }}" alt="" class="rounded">
-                </span>
-            </a>
+                <a href="{{ url('/admin/categorias') }}">
+                    <span class="info-box-icon">
+                    <img src="{{ url('/img/boxes.gif') }}" alt="" class="rounded">
+                    </span>
+                </a>
 
-            <div class="info-box-content">
-                <span class="info-box-text">Categorias</span>
-                <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_categorias }}</h2></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Categorias</span>
+                    <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_categorias }}</h2></span>
+                </div>
             </div>
-            <!-- /.info-box-content -->
+        </div>
+        {{-- Card de productos --}}
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+                <a href="{{ url('/admin/productos') }}">
+                    <span class="info-box-icon">
+                    <img src="{{ url('/img/tag.gif') }}" alt="" class="rounded">
+                    </span>
+                </a>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Productos</span>
+                    <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_productos }}</h2></span>
+                </div>
             </div>
-            <!-- /.info-box -->
+        </div>
+        {{-- Card de proveedores --}}
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+                <a href="{{ url('/admin/proveedores') }}">
+                    <span class="info-box-icon">
+                    <img src="{{ url('/img/delivery-truck.gif') }}" alt="" class="rounded">
+                    </span>
+                </a>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Proveedores</span>
+                    <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_proveedores }}</h2></span>
+                </div>
+            </div>
+        </div>
+        {{-- Card de compras --}}
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+                <a href="{{ url('/admin/compras') }}">
+                    <span class="info-box-icon">
+                    <img src="{{ url('/img/grocery.gif') }}" alt="" class="rounded">
+                    </span>
+                </a>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Compras</span>
+                    <span class="info-box-number"><h2 class="font-weight-bold">{{ $total_compras }}</h2></span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">

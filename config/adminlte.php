@@ -338,6 +338,12 @@ return [
             'icon' => 'fas fa-fw fa-shopping-cart',
             'active' => ['admin/compra*'],
         ],
+        [
+            'text' => 'Lotes',
+            'url' => 'admin/lotes',
+            'icon' => 'fas fa-fw fa-boxes',
+            'active' => ['admin/lote*'],
+        ],
         
     ],
 
