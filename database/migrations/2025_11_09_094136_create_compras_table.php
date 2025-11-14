@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->decimal('total', 10, 2);
             $table->string('estado', 100);
-            $table->text('observaciones')->nullable();
+            $table->text('observaciones')->nullable()->default('Ninguna');
 
             $table->timestamps();
         });

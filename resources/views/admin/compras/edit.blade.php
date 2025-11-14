@@ -53,16 +53,11 @@
                                 <p>{{ $compra->estado }}</p>
                             </div>
                         </div>
-                        <div class="col col-12 col-md-8 col-lg-3">
+                        <div class="col col-12 col-lg-6">
                             <div class="form-group">
                                 {{-- Observaciones --}}
                                 <label for="observaciones">Observaciones</label>
                                 <p>{{ $compra->observaciones }}</p>
-                            </div>
-                        </div>
-                        <div class="col col-12 col-md-4 col-lg-3">
-                            <div class="form-group">
-                                <a href="{{ route('compras.enviarCorreo', $compra) }}" class="btn bg-gradient-primary btn-block"><i class="fas fa-envelope"></i> Enviar al proveedor</a>
                             </div>
                         </div>
                     </div>
@@ -70,6 +65,7 @@
             </div>
         </div>
     </div>
+    {{-- Paso 2 | Agregar productos --}}
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
@@ -84,6 +80,75 @@
             </div>
         </div>
     </div>
+    {{-- Paso 3 | Finalizar compra --}}
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-gradient-info">
+                    <h3 class="card-title text-white m-0">
+                        <i class="fas fa-box mr-2"></i> <b>Paso 3 | Finalizar compra</b>
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('compras.finalizarCompra', $compra) }}" method="POST">
+                        @csrf
+                        
+                        <div class="row">
+                            <div class="col col-12 col-md-4">
+                                <div class="form-group">
+                                    {{-- Sucursal --}}
+                                    <label for="sucursal_id">Sucursal <span class="text-danger">*</span></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-truck"></i></span>
+                                        </div>
+                                        <select name="sucursal_id" id="sucursal_id" class="form-control" required>
+                                            <option value="">Seleccione una opción</option>
+                                            @foreach($sucursales as $sucursal)
+                                                <option value="{{ $sucursal->id }}" {{ old('sucursal_id') == $sucursal->id ? 'selected' : '' }}>
+                                                    {{ $sucursal->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('sucursal_id')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        {{-- Botones Enviar Correo y Finalizar --}}
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    <a 
+                                        href="{{ route('compras.enviarCorreo', $compra) }}" 
+                                        class="btn bg-gradient-primary btn-block"
+                                    >
+                                        <i class="fas fa-envelope"></i> Enviar al proveedor
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="form-group">
+                                    <button class="btn bg-gradient-success btn-block" type="submit">
+                                        <i class="fas fa-check"></i> Finalizar compra
+                                    </button>
+                                    {{-- <a 
+                                        href="{{ route('compras.finalizarCompra', $compra) }}" 
+                                        class="btn bg-gradient-success btn-block"
+                                    >
+                                        
+                                    </a> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 @stop
 
 @section('css')

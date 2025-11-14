@@ -50,3 +50,4 @@ Route::get('/admin/compras/create', [App\Http\Controllers\CompraController::clas
 Route::post('/admin/compras/create', [App\Http\Controllers\CompraController::class, 'store'])->name('compras.store')->middleware('auth');
 Route::get('/admin/compra/{id}/edit', [App\Http\Controllers\CompraController::class, 'edit'])->name('compras.edit')->middleware('auth');
 Route::get('/admin/compra/{compra}/enviar-correo', [App\Http\Controllers\CompraController::class, 'enviarCorreo'])->name('compras.enviarCorreo')->middleware('auth');
+Route::post('/admin/compra/{compra}/finalizar-compra', [App\Http\Controllers\CompraController::class, 'finalizarCompra'])->name('compras.finalizarCompra')->middleware('auth');

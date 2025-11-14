@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div class="row">
             {{-- Columna izquierda: formulario (6 campos) --}}
-            <div class="col-12 col-lg-4 mb-4">
-                <div class="card h-100 shadow-sm">
+            <div class="col-12 col-lg-4">
+                <div class="card h-100 shadow-md">
                     <div class="card-body">
                         {{-- Aquí van tus 6 campos del formulario --}}
                         <div class="row">
@@ -147,12 +147,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col col-12 col-md-6">
-            
-                            </div>
+                        <div class="row">
                             <div class="col col-12">
-                                <div class="form-group">
+                                <div class="form-group" style="margin: 0;">
                                     <button type="submit" class="btn bg-gradient-success btn-block" wire:click="agregarItems">
                                         <i class="fas fa-plus"></i> Agregar
                                     </button>
@@ -165,8 +162,8 @@
             </div>
 
             {{-- Columna derecha: tabla --}}
-            <div class="col-12 col-lg-8">
-                <div class="card h-100 shadow-sm">
+            <div class="col-12 col-lg-8 mt-4 mt-lg-0">
+                <div class="card h-100 shadow-md">
                     <div class="card-body">
                         {{-- Aquí va tu tabla de productos --}}
                         @if ($compra->detalleCompras->count() > 0)

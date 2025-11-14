@@ -95,7 +95,7 @@
         </div>
 
         <div class="content">
-            <p>Hola <strong>{{ $compra->proveedor->nombre }}</strong>,</p>
+            <p>Hola estimado/a <strong>{{ $compra->proveedor->nombre }}</strong>,</p>
             <p>Se ha generado una nueva orden de compra con el número <strong>{{ $compra->id }}</strong>.</p>
 
             <div class="details">
@@ -109,7 +109,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>N°</th>
+                        <th>Nro.</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
                     </tr>
@@ -128,7 +128,6 @@
             <p style="margin-top: 25px;">
                 Agradecemos su atención y esperamos su confirmación.  
                 <br>Saludos cordiales,  
-                <br><strong>Departamento de Compras</strong>
             </p>
         </div>
 

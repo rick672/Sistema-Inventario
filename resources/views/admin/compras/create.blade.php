@@ -37,7 +37,7 @@
                         <div class="row">
                             <div class="col col-12 col-md-4">
                                 <div class="form-group">
-                                    {{-- Categoria --}}
+                                    {{-- Proveedor --}}
                                     <label for="proveedor_id">Proveedor <span class="text-danger">*</span></label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
