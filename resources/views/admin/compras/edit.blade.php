@@ -134,12 +134,6 @@
                                     <button class="btn bg-gradient-success btn-block" type="submit">
                                         <i class="fas fa-check"></i> Finalizar compra
                                     </button>
-                                    {{-- <a 
-                                        href="{{ route('compras.finalizarCompra', $compra) }}" 
-                                        class="btn bg-gradient-success btn-block"
-                                    >
-                                        
-                                    </a> --}}
                                 </div>
                             </div>
                         </div>

@@ -97,7 +97,7 @@
                             </div>
                             <div class="col-12 col-sm-6">
                                 <button type="submit" class="btn bg-success btn-block">
-                                    <i class="fas fa-save"></i> Guardar Compra
+                                    <i class="fas fa-save"></i> Continuar Compra
                                 </button>
                             </div>
                         </div>

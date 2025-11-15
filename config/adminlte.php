@@ -356,6 +356,12 @@ return [
                     'icon' => 'fas fa-fw fa-building',
                     'active' => ['admin/inventario/sucursales_por_lotes*'],
                 ],
+                [
+                    'text' => 'Historial de Movimientos',
+                    'url' => 'admin/inventario/movimiento',
+                    'icon' => 'fas fa-fw fa-history',
+                    'active' => ['admin/inventario/movimiento*'],
+                ],
             ],
         ],
         

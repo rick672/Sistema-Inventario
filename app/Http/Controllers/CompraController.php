@@ -42,7 +42,7 @@ class CompraController extends Controller
         $compra->fecha = $request->fecha;
         $compra->observaciones = $request->observaciones;
         $compra->total = 0;
-        $compra->estado = 'pendiente';
+        $compra->estado = 'Pendiente';
         $compra->save();
 
         return redirect()->route('compras.edit', $compra->id)
@@ -132,8 +132,22 @@ class CompraController extends Controller
             DB::rollBack();
             dd('Error al finalizar la compra', $e->getMessage());
         }
+    }
 
+    public function show($id)
+    {
+        $compra = Compra::findOrFail($id);
+        $compra->load('detalleCompras.producto', 'proveedor');
 
+        $movimientoEntrada = MovimientoInventario::whereHas('lote', function ($query) use ($compra) {
+            $query->whereIn('id', $compra->detalleCompras->pluck('lote_id'));
+        })->where('tipo_movimiento', 'Entrada')->first();
+
+        $sucursal_destino = null;
+        if($movimientoEntrada){
+            $sucursal_destino = Sucursal::find($movimientoEntrada->sucursal_id);
+        }
+        return view('admin.compras.show', compact('compra', 'sucursal_destino'));
     }
 
 
