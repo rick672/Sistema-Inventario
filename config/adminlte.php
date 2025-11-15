@@ -352,9 +352,9 @@ return [
                 ],
                 [
                     'text' => 'Sucursales por Lotes',
-                    'url' => 'admin/sucursales_por_lotes',
+                    'url' => 'admin/inventario/sucursales_por_lotes',
                     'icon' => 'fas fa-fw fa-building',
-                    'active' => ['admin/sucursales_por_lotes*'],
+                    'active' => ['admin/inventario/sucursales_por_lotes*'],
                 ],
             ],
         ],

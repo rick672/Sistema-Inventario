@@ -18,6 +18,16 @@ class InventarioSucursalLoteController extends Controller
         }
 
         // return response()->json($sucursales);
-        return view('admin.sucursales_por_lotes.index', compact('sucursales'));
+        return view('admin.inventario.sucursales_por_lotes.index', compact('sucursales'));
+    }
+
+    public function mostrar_inventario_por_sucursal($id)
+    {
+        $sucursal = Sucursal::findOrFail($id);
+        $inventario_sucursales_por_lotes = InventarioSucursalLote::where('sucursal_id', $id)
+        ->with('lote.producto', 'lote.proveedor')
+        ->get();
+
+        return view('admin.inventario.sucursales_por_lotes.mostrar_inventario_por_sucursal', compact('sucursal', 'inventario_sucursales_por_lotes'));
     }
 }

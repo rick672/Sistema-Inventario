@@ -62,4 +62,5 @@ Route::put('/admin/lote/{id}', [App\Http\Controllers\LoteController::class, 'upd
 Route::delete('/admin/lote/{id}', [App\Http\Controllers\LoteController::class, 'destroy'])->name('lotes.destroy')->middleware('auth');
 
 // Inventario por lotes
-Route::get('/admin/sucursales_por_lotes', [App\Http\Controllers\InventarioSucursalLoteController::class, 'index'])->name('sucursales_por_lotes.index')->middleware('auth');
+Route::get('/admin/inventario/sucursales_por_lotes', [App\Http\Controllers\InventarioSucursalLoteController::class, 'index'])->name('sucursales_por_lotes.index')->middleware('auth');
+Route::get('/admin/inventario/inventario_por_sucursal/sucursal/{id}', [App\Http\Controllers\InventarioSucursalLoteController::class, 'mostrar_inventario_por_sucursal'])->name('mostrar_inventario_por_sucursal.index')->middleware('auth');

@@ -23,18 +23,18 @@
 
 @section('content')
     <div class="row">
-        @foreach ($sucursales as $item)
+        @foreach ($sucursales as $sucursal)
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box">
-                    <a href="{{ url('/admin/lotes') }}">
+                    <a href="{{ url('/admin/inventario/inventario_por_sucursal/sucursal/'.$sucursal->id) }}">
                         <span class="info-box-icon">
                         <img src="{{ url('/img/supermarket.gif') }}" alt="" class="rounded">
                         </span>
                     </a>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Sucursal {{ $item->nombre }}</span>
-                        <span class="info-box-number"><h2 class="font-weight-bold">{{ $item->total_inventario }} Productos </h2></span>
+                        <span class="info-box-text">Sucursal {{ $sucursal->nombre }}</span>
+                        <span class="info-box-number"><h2 class="font-weight-bold">{{ $sucursal->total_inventario }} Productos </h2></span>
                     </div>
                 </div>
             </div>
