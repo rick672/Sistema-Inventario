@@ -52,9 +52,9 @@
                             @foreach($compras as $compra)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $compra->proveedor_id }}</td>
+                                    <td>{{ $compra->proveedor->nombre }}</td>
                                     <td>{{ $compra->fecha }}</td>
-                                    <td>{{ $compra->total }}</td>
+                                    <td>{{ $compra->total }} .Bs</td>
                                     <td>{{ $compra->estado }}</td>
                                     <td>
                                         <a 
@@ -62,46 +62,50 @@
                                         >
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a 
-                                            href="{{ url('/admin/compra/' . $compra->id . '/edit') }}" class="btn btn-primary"
-                                        >
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <form 
-                                            action="{{ url('/admin/compra/' . $compra->id ) }}" 
-                                            method="POST" 
-                                            id="miformulario{{ $compra->id }}" 
-                                            class="d-inline"
-                                        >
-                                            @csrf
-                                            @method('DELETE')
-                                            <button 
-                                                type="submit" 
-                                                class="btn btn-danger"
-                                                onclick="preguntar{{ $compra->id }}(event)"
+                                        @if ($compra->estado != 'Recibido')
+                                            <a 
+                                                href="{{ url('/admin/compra/' . $compra->id . '/edit') }}" class="btn btn-primary"
                                             >
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                            <script>
-                                                function preguntar{{ $compra->id }}(e) {
-                                                    e.preventDefault();
-                                                    Swal.fire({
-                                                    title: "¿Desea eliminar este registro?",
-                                                    text: "Esta acción no se puede deshacer.",
-                                                    icon: "question",
-                                                    showCancelButton: true,
-                                                    confirmButtonColor: "#3085d6",
-                                                    cancelButtonColor: "#d33",
-                                                    confirmButtonText: "Si, eliminar!",
-                                                    cancelButtonText: "No, no eliminar",
-                                                    }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        document.getElementById('miformulario{{ $compra->id }}').submit();
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                        @endif
+                                        @if ($compra->estado != 'Recibido')
+                                            <form 
+                                                action="{{ url('/admin/compra/' . $compra->id ) }}" 
+                                                method="POST" 
+                                                id="miformulario{{ $compra->id }}" 
+                                                class="d-inline"
+                                            >
+                                                @csrf
+                                                @method('DELETE')
+                                                <button 
+                                                    type="submit" 
+                                                    class="btn btn-danger"
+                                                    onclick="preguntar{{ $compra->id }}(event)"
+                                                >
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                                <script>
+                                                    function preguntar{{ $compra->id }}(e) {
+                                                        e.preventDefault();
+                                                        Swal.fire({
+                                                        title: "¿Desea eliminar este registro?",
+                                                        text: "Esta acción no se puede deshacer.",
+                                                        icon: "question",
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: "#3085d6",
+                                                        cancelButtonColor: "#d33",
+                                                        confirmButtonText: "Si, eliminar!",
+                                                        cancelButtonText: "No, no eliminar",
+                                                        }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('miformulario{{ $compra->id }}').submit();
+                                                        }
+                                                        });
                                                     }
-                                                    });
-                                                }
-                                            </script>
-                                        </form>
+                                                </script>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
