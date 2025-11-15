@@ -26,6 +26,43 @@
         <div class="col-md-12">
             <div class="card card-outline card-primary">
                 <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3 class="card-title mb-0"><b>Filtrado de datos</b></h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive">
+                    <form action="{{ url('/admin/lotes') }}" method="GET">
+                        <div class="row">
+                            <div class="col-12 col-md-3">
+                                <div class="form-group">
+                                    <label for="">Desde</label>
+                                    <input type="date" class="form-control" name="fecha_desde">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group">
+                                    <label for="">Hasta</label>
+                                    <input type="date" class="form-control" name="fecha_hasta">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 d-flex align-items-end">
+                                <div class="form-group">
+                                    <button 
+                                        type="date"
+                                        class="btn btn-primary">
+                                        <i class="fas fa-search"></i> Filtrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-outline card-primary">
+                <div class="card-header d-flex align-items-center justify-content-between">
                     <h3 class="card-title mb-0"><b>Lotes registrados</b></h3>
                     <!-- /.card-tools -->
                 </div>
@@ -40,6 +77,7 @@
                                 <th>Proveedor</th>
                                 <th>Fecha de Entrada</th>
                                 <th>Fecha de Vencimiento</th>
+                                <th>Dias restantes</th>
                                 <th>Cantidad Actual</th>
                                 <th>Estado</th>
                             </tr>
@@ -53,10 +91,14 @@
                                     <td>{{ $lote->proveedor->nombre }}</td>
                                     <td>{{ $lote->fecha_entrada }}</td>
                                     <td>{{ $lote->fecha_vencimiento }}</td>
+                                    <td>{{ $lote->days_to_expire }} Dias</td>
                                     <td>{{ $lote->cantidad_actual }}</td>
                                     <td>
                                         @if($lote->is_expired)
                                             <span class="badge badge-danger">Vencido</span>
+
+                                        @elseif($lote->days_to_expire <= 20)
+                                            <span class="badge badge-warning">Por caducar</span>
                                         @else
                                             <span class="badge badge-success">Vigente</span>
                                         @endif

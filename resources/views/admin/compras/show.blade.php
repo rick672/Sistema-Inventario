@@ -87,7 +87,7 @@
                             <div class="form-group">
                                 {{-- Sucursal  --}}
                                 <label for="observaciones">Sucursal </label>
-                                <p>{{ $sucursal_destino->nombre }}</p>
+                                <p>{{ $sucursal_destino?->nombre ?? 'Sin sucursal' }}</p>
                             </div>
                         </div>
                         <div class="col col-12 col-sm-6 col-md-3 col-lg-2">

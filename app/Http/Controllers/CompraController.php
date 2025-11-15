@@ -64,7 +64,7 @@ class CompraController extends Controller
         $compra->load('detalleCompras.producto', 'proveedor');
         $proveedorEmail = $compra->proveedor->email;
 
-        $compra->estado = 'enviado al proveedor';
+        $compra->estado = 'Enviado al Proveedor';
         $compra->save();
 
         Mail::to($proveedorEmail)->send(new CompraProveedorMail($compra));
