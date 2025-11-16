@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-center mb-0">
         <h1 class="m-0 text-dark">Listado de Lotes</h1>
@@ -28,7 +25,6 @@
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h3 class="card-title mb-0"><b>Filtrado de datos</b></h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body table-responsive">
                     <form action="{{ url('/admin/lotes') }}" method="GET">
                         <div class="row">
@@ -64,9 +60,7 @@
             <div class="card card-outline card-primary">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h3 class="card-title mb-0"><b>Lotes registrados</b></h3>
-                    <!-- /.card-tools -->
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body table-responsive">
                     <table id="dataTable" class="table table-striped table-hover table-sm">
                         <thead>

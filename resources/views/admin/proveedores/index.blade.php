@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-center mb-0">
         <h1 class="m-0 text-dark">Listado de Proveedores</h1>
@@ -144,7 +141,7 @@
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <button type="submit" class="btn bg-success btn-block">
-                                                            <i class="fas fa-save"></i> Guardar
+                                                            <i class="fas fa-check"></i> Guardar
                                                         </button>
                                                     </div>
                                                 </div>
@@ -156,7 +153,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body table-responsive">
                     <table id="dataTable" class="table table-striped table-hover table-sm">
                         <thead>

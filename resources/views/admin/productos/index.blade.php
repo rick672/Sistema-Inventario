@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-center mb-0">
         <h1 class="m-0 text-dark">Listado de Productos</h1>
@@ -29,15 +26,13 @@
                     <h3 class="card-title mb-0"><b>Productos registrados</b></h3>
 
                     <div class="card-tools position-absolute" style="right: 1rem;">
-                    <a href="{{ url('/admin/productos/create') }}" class="btn btn-primary">
+                    <a href="{{ url('/admin/productos/create') }}" class="btn bg-gradient-success">
                         <i class="fas fa-plus"></i> Nuevo Producto
                     </a>
                     </div>
-                    <!-- /.card-tools -->
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body table-responsive">
-                    <table id="dataTable" class="table table-striped table-hover table-sm">
+                    <table id="dataTable" class="table table-striped table-hover table-sm" style="padding-top: 15px;">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -45,13 +40,10 @@
                                 <th>Codigo</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
-                                <th>Imagen</th>
-                                {{-- <th>Precio Compra</th> --}}
-                                <th>Precio Venta</th>
-                                <th>Stock Mínimo</th>
-                                {{-- <th>Stock Máximo</th> --}}
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th class="text-center">Imagen</th>
+                                <th class="text-center">Precio Venta</th>
+                                <th class="text-center">Estado</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,30 +59,29 @@
                                             src="{{ asset('storage/' . $producto->imagen) }}"
                                             alt="{{ $producto->nombre }}" 
                                             class="img-fluid rounded-lg"
-                                            style="width: 125px; height: 125px; object-fit: cover;"
+                                            style="width: 100px; height: 80px; object-fit: cover;"
                                         >
                                     </td>
-                                    {{-- <td>{{ $producto->precio_compra }}</td> --}}
-                                    <td>{{ $producto->precio_venta }}</td>
-                                    <td>{{ $producto->stock_minimo }}</td>
-                                    {{-- <td>{{ $producto->stock_maximo }}</td> --}}
-                                    <td>
-                                        @if ($producto->estado=='1')
-                                            <span class="badge bg-success">Activo</span>
+                                    <td class="text-center">{{ $producto->precio_venta }} .Bs</td>
+                                    <td class="text-center">
+                                        <span class="d-none">{{ $producto->estado }}</span>
+
+                                        @if ($producto->estado == '1')
+                                            <i class="bi bi-check-circle-fill text-success" style="font-size:1.3rem;"></i>
                                         @else
-                                            <span class="badge bg-danger">Inactivo</span>
+                                            <i class="bi bi-x-circle-fill text-danger" style="font-size:1.3rem;"></i>
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <a 
                                             href="{{ url('/admin/productos/' . $producto->id) }}" class="btn btn-info"
                                         >
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a 
-                                            href="{{ url('/admin/productos/' . $producto->id . '/edit') }}" class="btn btn-primary"
+                                            href="{{ url('/admin/productos/' . $producto->id . '/edit') }}" class="btn btn-warning"
                                         >
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
                                         <form action="{{ url('/admin/productos/' . $producto->id ) }}" method="POST" id="miformulario{{ $producto->id }}" class="d-inline">
                                             @csrf
@@ -128,10 +119,8 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-          </div>
+        </div>
     </div>
 @stop
 

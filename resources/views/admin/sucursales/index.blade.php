@@ -50,13 +50,13 @@
                                     <td>{{ $sucursal->direccion }}</td>
                                     <td>{{ $sucursal->telefono }}</td>
                                     <td class="text-center">
+                                        <span class="d-none">{{ $sucursal->activo }}</span>
                                         @if ($sucursal->activo == '1')
                                             <i class="bi bi-check-circle-fill text-success" style="font-size:1.3rem;"></i>
                                         @else
                                             <i class="bi bi-x-circle-fill text-danger" style="font-size:1.3rem;"></i>
                                         @endif
                                     </td>
-
                                     <td>
                                         <a 
                                             href="{{ url('/admin/sucursales/' . $sucursal->id) }}" class="btn btn-info"

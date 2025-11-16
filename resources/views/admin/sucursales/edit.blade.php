@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-end mb-2">
         <h1 class="m-0 text-dark">Editar Sucursal</h1>

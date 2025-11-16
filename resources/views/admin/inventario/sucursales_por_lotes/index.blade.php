@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-center mb-0">
         <h1 class="m-0 text-dark">Inventario de Sucursales por Lotes</h1>

@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-end mb-2">
         <h1 class="m-0 text-dark">Registro de Producto</h1>
@@ -12,7 +9,7 @@
                     <a href="{{ url('/admin') }}"><i class="fas fa-home"></i> Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ url('/admin/productos') }}">Producto</a>
+                    <a href="{{ url('/admin/productos') }}">Productos</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Registrar</li>
             </ol>
@@ -113,7 +110,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                                                 </div>
-                                                <input style="text-align: center" type="number" value="{{ old('precio_compra') }}" class="form-control" id="precio_compra" name="precio_compra" required>
+                                                <input style="text-align: center" type="number" step="0.01" value="{{ old('precio_compra') }}" class="form-control" id="precio_compra" name="precio_compra" required>
                                             </div>
                                             @error('precio_compra')
                                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -128,7 +125,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                                                 </div>
-                                                <input style="text-align: center" type="number" value="{{ old('precio_venta') }}" class="form-control" id="precio_venta" name="precio_venta" required>
+                                                <input style="text-align: center" type="number" step="0.01" value="{{ old('precio_venta') }}" class="form-control" id="precio_venta" name="precio_venta" required>
                                             </div>
                                             @error('precio_venta')
                                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -243,13 +240,13 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-2">
-                                <a href="{{ url('/admin/productos') }}" class="btn btn-outline-secondary btn-block">
+                                <a href="{{ url('/admin/productos') }}" class="btn bg-gradient-secondary btn-block">
                                     <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <button type="submit" class="btn btn-outline-success btn-block">
-                                    <i class="fas fa-save"></i> Guardar
+                                <button type="submit" class="btn bg-gradient-success btn-block">
+                                    <i class="fas fa-check"></i> Guardar
                                 </button>
                             </div>
                         </div>

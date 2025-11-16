@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-end mb-2">
         <h1 class="m-0 text-dark">Editar Categoría</h1>
@@ -25,7 +22,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card">
-                <div class="card-header bg-gradient-success">
+                <div class="card-header bg-gradient-primary">
                     <h3 class="card-title text-white m-0">
                         <i class="fas fa-edit mr-2"></i> <b>Editar registro</b>
                     </h3>
@@ -49,13 +46,13 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-2">
-                                <a href="{{ url('/admin/categorias') }}" class="btn btn-outline-secondary btn-block">
+                                <a href="{{ url('/admin/categorias') }}" class="btn bg-gradient-secondary btn-block">
                                     <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <button type="submit" class="btn btn-outline-success btn-block">
-                                    <i class="fas fa-save"></i> Actualizar
+                                <button type="submit" class="btn bg-gradient-success btn-block">
+                                    <i class="fas fa-check"></i> Actualizar
                                 </button>
                             </div>
                         </div>

@@ -1,8 +1,5 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-center mb-0">
         <h1 class="m-0 text-dark">Listado de Categorías</h1>
@@ -29,13 +26,11 @@
                     <h3 class="card-title mb-0"><b>Categorias registradas</b></h3>
 
                     <div class="card-tools position-absolute" style="right: 1rem;">
-                    <a href="{{ url('/admin/categorias/create') }}" class="btn btn-primary">
+                    <a href="{{ url('/admin/categorias/create') }}" class="btn bg-gradient-success">
                         <i class="fas fa-plus"></i> Nueva Categoria
                     </a>
                     </div>
-                    <!-- /.card-tools -->
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body table-responsive">
                     <table id="dataTable" class="table table-striped table-hover table-sm">
                         <thead>
@@ -59,9 +54,9 @@
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a 
-                                            href="{{ url('/admin/categoria/' . $categoria->id . '/edit') }}" class="btn btn-primary"
+                                            href="{{ url('/admin/categoria/' . $categoria->id . '/edit') }}" class="btn btn-warning"
                                         >
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
                                         <form action="{{ url('/admin/categoria/' . $categoria->id ) }}" method="POST" id="miformulario{{ $categoria->id }}" class="d-inline">
                                             @csrf

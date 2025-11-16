@@ -1,11 +1,8 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-end mb-2">
-        <h1 class="m-0 text-dark">Ver Producto</h1>
+        <h1 class="m-0 text-dark">Detalle del Producto</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent p-0 m-0">
                 <li class="breadcrumb-item">
@@ -14,7 +11,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ url('/admin/productos') }}">Producto</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Ver</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $producto->nombre }}</li>
             </ol>
         </nav>
     </div>
@@ -27,7 +24,7 @@
             <div class="card">
                 <div class="card-header bg-gradient-info">
                     <h3 class="card-title text-white m-0">
-                        <i class="fas fa-plus-circle mr-2"></i> <b>Detalle del Producto</b>
+                        <i class="fas fa-eye mr-2"></i> <b>Datos del Producto</b>
                     </h3>
                 </div>
                 <div class="card-body table-responsive">
@@ -70,14 +67,14 @@
                                     <div class="form-group">
                                         {{-- Precio Compra --}}
                                         <label for="precio_compra">Precio Compra </label>
-                                        <input style="text-align: center" type="number" class="form-control bg-light" value="{{ $producto->precio_compra }}"  name="precio_compra" id="precio_compra" disabled>
+                                        <input style="text-align: center" type="text" class="form-control bg-light" value="{{ $producto->precio_compra . ' .Bs' }}"  name="precio_compra" id="precio_compra" disabled>
                                     </div>
                                 </div>
                                 <div class="col col-6 col-md-4">
                                     <div class="form-group">
                                         {{-- Precio Venta --}}
                                         <label for="precio_venta">Precio Venta </label>
-                                        <input style="text-align: center" type="number" class="form-control bg-light" value="{{ $producto->precio_venta }}"  name="precio_venta" id="precio_venta" disabled>
+                                        <input style="text-align: center" type="text" class="form-control bg-light" value="{{ $producto->precio_venta. ' .Bs' }}"  name="precio_venta" id="precio_venta" disabled>
                                     </div>
                                 </div>
                                 <div class="col col-6 col-md-4">
@@ -125,8 +122,8 @@
                     </div>
 
                     <div class="row mt-3">
-                        <div class="col-12 col-sm-6 mb-2">
-                            <a href="{{ url('/admin/productos') }}" class="btn btn-outline-secondary btn-block">
+                        <div class="col-12">
+                            <a href="{{ url('/admin/productos') }}" class="btn bg-gradient-secondary btn-block">
                                 <i class="fas fa-arrow-left mr-1"></i> Volver
                             </a>
                         </div>
