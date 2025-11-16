@@ -30,7 +30,7 @@
                         <i class="fas fa-plus-circle mr-2"></i> <b>Detalle del Producto</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <div class="row">
                         <div class="col col-12 col-md-7 col-lg-9">
                             <div class="row">

@@ -1,10 +1,7 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
-    <div class="d-flex justify-content-between align-items-center mb-0">
+    <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0 text-dark">Listado de Sucursales</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent p-0 m-0">
@@ -20,7 +17,6 @@
     </div>
 @stop
 
-
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -29,15 +25,13 @@
                     <h3 class="card-title mb-0"><b>Sucursales registradas</b></h3>
 
                     <div class="card-tools position-absolute" style="right: 1rem;">
-                    <a href="{{ url('/admin/sucursales/create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Nueva Sucursal
-                    </a>
+                        <a href="{{ url('/admin/sucursales/create') }}" class="btn bg-gradient-success">
+                            <i class="fas fa-plus"></i> Nueva Sucursal
+                        </a>
                     </div>
-                    <!-- /.card-tools -->
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="dataTable" class="table table-striped table-hover table-sm">
+                <div class="card-body table-responsive">
+                    <table id="dataTable" class="table table-striped table-hover table-sm" style="padding-top: 15px;">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -55,13 +49,14 @@
                                     <td>{{ $sucursal->nombre }}</td>
                                     <td>{{ $sucursal->direccion }}</td>
                                     <td>{{ $sucursal->telefono }}</td>
-                                    <td>
-                                        @if ($sucursal->activo=='1')
-                                            <span class="badge bg-success">Activo</span>
+                                    <td class="text-center">
+                                        @if ($sucursal->activo == '1')
+                                            <i class="bi bi-check-circle-fill text-success" style="font-size:1.3rem;"></i>
                                         @else
-                                            <span class="badge bg-danger">Inactivo</span>
+                                            <i class="bi bi-x-circle-fill text-danger" style="font-size:1.3rem;"></i>
                                         @endif
                                     </td>
+
                                     <td>
                                         <a 
                                             href="{{ url('/admin/sucursales/' . $sucursal->id) }}" class="btn btn-info"
@@ -69,9 +64,9 @@
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a 
-                                            href="{{ url('/admin/sucursales/' . $sucursal->id . '/edit') }}" class="btn btn-primary"
+                                            href="{{ url('/admin/sucursales/' . $sucursal->id . '/edit') }}" class="btn btn-warning"
                                         >
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
                                         <form action="{{ url('/admin/sucursales/' . $sucursal->id ) }}" method="POST" id="miformulario{{ $sucursal->id }}" class="d-inline">
                                             @csrf
@@ -81,7 +76,7 @@
                                                 class="btn btn-danger"
                                                 onclick="preguntar{{ $sucursal->id }}(event)"
                                             >
-                                                <i class="fas fa-trash"></i>
+                                                <i class="fas fa-trash-alt"></i>
                                             </button>
                                             <script>
                                                 function preguntar{{ $sucursal->id }}(e) {
@@ -109,9 +104,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
           </div>
     </div>
 @stop
@@ -125,6 +118,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 0;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Estilos para los botones DataTable */

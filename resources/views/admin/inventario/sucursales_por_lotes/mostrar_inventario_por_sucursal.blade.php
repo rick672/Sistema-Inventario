@@ -29,7 +29,7 @@
                     <h3 class="card-title mb-0"><b>Inventario registrado</b></h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table id="dataTable" class="table table-striped table-hover table-sm">
                         <thead>
                             <tr>

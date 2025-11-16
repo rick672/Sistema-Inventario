@@ -6,6 +6,24 @@
 @section('adminlte_css')
     @stack('css')
     @yield('css')
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+        font-family: 'Inter', sans-serif !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, 
+    .card-header {
+        font-family: 'Roboto', sans-serif !important;
+        font-weight: 600;
+    }
+
+    .breadcrumb {
+        font-family: 'Inter', sans-serif !important;
+        background: transparent !important;
+    }
+</style>
 @stop
 
 @section('classes_body', $layoutHelper->makeBodyClasses())

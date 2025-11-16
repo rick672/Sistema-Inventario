@@ -30,7 +30,7 @@
                         <i class="fas fa-shopping-cart mr-2"></i> <b>Paso 1 | Compra creada</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <div class="row">
                         <div class="col col-12 col-sm-6 col-md-4 col-lg-2">
                             <div class="form-group">
@@ -74,7 +74,7 @@
                         <i class="fas fa-box mr-2"></i> <b>Paso 2 | Agregar productos</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <livewire:admin.compras.items-compra :compra="$compra" />
                 </div>
             </div>
@@ -89,7 +89,7 @@
                         <i class="fas fa-box mr-2"></i> <b>Paso 3 | Finalizar compra</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <form action="{{ route('compras.finalizarCompra', $compra) }}" method="POST">
                         @csrf
                         

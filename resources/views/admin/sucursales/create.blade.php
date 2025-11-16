@@ -1,11 +1,8 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-end mb-2">
-        <h1 class="m-0 text-dark">Registro de Sucursales</h1>
+        <h1 class="m-0 text-dark">Registro de Sucursal</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent p-0 m-0">
                 <li class="breadcrumb-item">
@@ -30,7 +27,7 @@
                         <i class="fas fa-plus-circle mr-2"></i> <b>Nuevo registro</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <form action="{{ url('/admin/sucursales/create') }}" method="POST">
                         @csrf
                         <div class="form-group">
@@ -86,13 +83,13 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-2">
-                                <a href="{{ url('/admin/sucursales') }}" class="btn btn-outline-secondary btn-block">
-                                    <i class="fas fa-arrow-left"></i> Cancelar
+                                <a href="{{ url('/admin/sucursales') }}" class="btn bg-gradient-secondary btn-block">
+                                    <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <button type="submit" class="btn btn-outline-success btn-block">
-                                    <i class="fas fa-save"></i> Guardar
+                                <button type="submit" class="btn bg-gradient-success btn-block">
+                                    <i class="fas fa-check"></i> Guardar
                                 </button>
                             </div>
                         </div>

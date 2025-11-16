@@ -25,12 +25,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card">
-                <div class="card-header bg-gradient-success">
+                <div class="card-header bg-gradient-primary">
                     <h3 class="card-title text-white m-0">
-                        <i class="fas fa-plus-circle mr-2"></i> <b>Editar registro</b>
+                        <i class="fas fa-pencil-alt mr-2"></i> <b>Editar registro</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <form action="{{ url('/admin/sucursales/'. $sucursal->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -88,12 +88,12 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-2">
                                 <a href="{{ url('/admin/sucursales') }}" class="btn btn-secondary btn-block">
-                                    <i class="fas fa-arrow-left"></i> Cancelar
+                                    <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <button type="submit" class="btn btn-success btn-block">
-                                    <i class="fas fa-save"></i> Actualizar
+                                    <i class="fas fa-check"></i> Actualizar
                                 </button>
                             </div>
                         </div>

@@ -5,7 +5,7 @@
             {{-- Columna izquierda: formulario (6 campos) --}}
             <div class="col-12 col-lg-4">
                 <div class="card h-100 shadow-md">
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         {{-- Aquí van tus 6 campos del formulario --}}
                         <div class="row">
                             <div class="col-12 col-md-8 col-lg-12">
@@ -164,7 +164,7 @@
             {{-- Columna derecha: tabla --}}
             <div class="col-12 col-lg-8 mt-4 mt-lg-0">
                 <div class="card h-100 shadow-md">
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         {{-- Aquí va tu tabla de productos --}}
                         @if ($compra->detalleCompras->count() > 0)
                             <div class="card shadow-sm border-0">

@@ -30,7 +30,7 @@
                         <i class="fas fa-edit mr-2"></i> <b>Editar registro</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <form action="{{ url('/admin/categoria/'. $categoria->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -50,7 +50,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-2">
                                 <a href="{{ url('/admin/categorias') }}" class="btn btn-outline-secondary btn-block">
-                                    <i class="fas fa-arrow-left"></i> Cancelar
+                                    <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
                             <div class="col-12 col-sm-6">

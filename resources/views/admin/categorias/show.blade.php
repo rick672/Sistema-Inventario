@@ -30,7 +30,7 @@
                         <i class="fas fa-info-circle mr-2"></i> <b>Detalles de la Categoría</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <div class="form-group">
                         <label for="nombre">Nombre <span class="text-danger">*</span></label>
                         <input type="text" class="form-control bg-light" value="{{ $categoria->nombre }}" id="nombre" name="nombre" readonly>

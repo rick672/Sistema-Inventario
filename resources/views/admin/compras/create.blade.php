@@ -30,7 +30,7 @@
                         <i class="fas fa-plus-circle mr-2"></i> <b>Nuevo registro</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <form action="{{ url('/admin/compras/create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
@@ -92,7 +92,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-2">
                                 <a href="{{ url('/admin/compras') }}" class="btn bg-secondary btn-block">
-                                    <i class="fas fa-arrow-left"></i> Cancelar
+                                    <i class="fas fa-times"></i> Cancelar
                                 </a>
                             </div>
                             <div class="col-12 col-sm-6">

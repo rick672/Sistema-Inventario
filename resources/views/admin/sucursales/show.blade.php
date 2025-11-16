@@ -1,11 +1,8 @@
 @extends('adminlte::page')
 
-{{-- titulo de la pagina --}}
-{{-- @section('title', 'Categorias') --}}
-
 @section('content_header')
     <div class="d-flex justify-content-between align-items-end mb-2">
-        <h1 class="m-0 text-dark">Ver Sucursal</h1>
+        <h1 class="m-0 text-dark">Detalle de Sucursal</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent p-0 m-0">
                 <li class="breadcrumb-item">
@@ -14,7 +11,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ url('/admin/sucursales') }}">Sucursales</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Ver</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $sucursal->nombre }}</li>
             </ol>
         </nav>
     </div>
@@ -27,10 +24,10 @@
             <div class="card shadow">
                 <div class="card-header bg-gradient-info">
                     <h3 class="card-title text-white m-0">
-                        <i class="fas fa-plus-circle mr-2"></i> <b>Detalles de la Sucursal</b>
+                        <i class="fas fa-eye mr-2"></i> <b>Datos de la Sucursal</b>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <div class="form-group">
                         {{-- Nombre --}}
                         <label for="nombre">Nombre</label>
@@ -83,8 +80,8 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-sm-6 mb-2">
-                            <a href="{{ url('/admin/sucursales') }}" class="btn btn-outline-secondary btn-block">
+                        <div class="col-12">
+                            <a href="{{ url('/admin/sucursales') }}" class="btn bg-gradient-secondary btn-block">
                                 <i class="fas fa-arrow-left"></i> Volver
                             </a>
                         </div>
