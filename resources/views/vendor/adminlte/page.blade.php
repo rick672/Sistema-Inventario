@@ -87,6 +87,11 @@
     @endif
 
     <script>
+        // Actualizar fecha actual
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('es-ES', options);
+        
         $(document).ready(function() {
             // Crear contenido del control sidebar
             var sidebarContent = `
