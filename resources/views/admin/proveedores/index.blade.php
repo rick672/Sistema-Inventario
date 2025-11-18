@@ -44,7 +44,7 @@
                         >
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
-                                    <div class="modal-header bg-gradient-success">
+                                    <div class="modal-header bg-gradient-info">
                                         <h5 class="modal-title" id="exampleModalLabel">Crear Proveedor</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -159,7 +159,6 @@
                             <tr>
                                 <th>#</th>
                                 <th>Empresa</th>
-                                <th>Dirección</th>
                                 <th>Nombre</th>
                                 <th>Telefono</th>
                                 <th>Email</th>
@@ -171,7 +170,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $proveedor->empresa }}</td>
-                                    <td>{{ $proveedor->direccion }}</td>
                                     <td>{{ $proveedor->nombre }}</td>
                                     <td>{{ $proveedor->telefono }}</td>
                                     <td>{{ $proveedor->email }}</td>
@@ -253,8 +251,8 @@
 
 
                                         <!-- Modal para editar un proveedor -->
-                                        <button type="button" class="btn bg-gradient-primary" data-toggle="modal" data-target="#ModalEdit{{ $proveedor->id }}">
-                                            <i class="fas fa-pencil-alt"></i>
+                                        <button type="button" class="btn bg-gradient-warning" data-toggle="modal" data-target="#ModalEdit{{ $proveedor->id }}">
+                                            <i class="fas fa-pen"></i>
                                         </button>
 
                                         <!-- Modal -->

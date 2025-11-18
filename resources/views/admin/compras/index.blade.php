@@ -26,7 +26,7 @@
                     <h3 class="card-title mb-0"><b>Compras registradas</b></h3>
 
                     <div class="card-tools position-absolute" style="right: 1rem;">
-                    <a href="{{ url('/admin/compras/create') }}" class="btn btn-primary">
+                    <a href="{{ url('/admin/compras/create') }}" class="btn btn-success">
                         <i class="fas fa-plus"></i> Nueva Compra
                     </a>
                     </div>
@@ -39,8 +39,8 @@
                                 <th>Proveedor</th>
                                 <th>fecha</th>
                                 <th>Total</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th class="text-center">Estado</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,8 +50,18 @@
                                     <td>{{ $compra->proveedor->nombre }}</td>
                                     <td>{{ $compra->fecha }}</td>
                                     <td>{{ $compra->total }} .Bs</td>
-                                    <td>{{ $compra->estado }}</td>
-                                    <td>
+                                    <td class="text-center">
+                                        <span class="badge badge-{{
+                                            $compra->estado === 'Pendiente' ? 'warning' :
+                                            ($compra->estado === 'Recibido' ? 'success' :
+                                            ($compra->estado === 'Enviado al Proveedor' ? 'danger' : 'secondary'))
+                                        }}">
+                                            <p style="font-size: 15px; margin:0">
+                                                {{ $compra->estado }}
+                                            </p>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
                                         <a 
                                             href="{{ url('/admin/compra/' . $compra->id) }}" class="btn btn-info"
                                         >
@@ -59,10 +69,15 @@
                                         </a>
                                         @if ($compra->estado != 'Recibido')
                                             <a 
-                                                href="{{ url('/admin/compra/' . $compra->id . '/edit') }}" class="btn btn-primary"
+                                                href="{{ url('/admin/compra/' . $compra->id . '/edit') }}" class="btn btn-warning"
                                             >
-                                                <i class="fas fa-pencil-alt"></i>
+                                                <i class="fas fa-pen"></i>
                                             </a>
+                                        @else
+                                            {{-- Editar deshabilitado (disabled) --}}
+                                            <button class="btn bg-secondary" disabled>
+                                                <i class="fas fa-pen"></i>
+                                            </button>
                                         @endif
                                         @if ($compra->estado != 'Recibido')
                                             <form 
@@ -100,6 +115,11 @@
                                                     }
                                                 </script>
                                             </form>
+                                        @else
+                                            {{-- Editar deshabilitado (disabled) --}}
+                                            <button class="btn bg-secondary" disabled>
+                                                <i class="fas fa-trash"></i>
+                                            </button>
                                         @endif
                                     </td>
                                 </tr>

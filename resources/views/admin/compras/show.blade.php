@@ -66,20 +66,7 @@
                                 <p>{{ $compra->observaciones }}</p>
                             </div>
                         </div>
-                        {{-- <div class="col col-12 col-md-4 col-lg-1">
-                            <div class="form-group">
-                                <label for="estado">Estado Compra</label>
-                                <p>
-                                    <span class="badge badge-{{ 
-                                        $compra->estado === 'Pendiente' ? 'warning' : 
-                                        ($compra->estado === 'Recibido' ? 'success' : 
-                                        ($compra->estado === 'Enviado al Proveedor' ? 'danger' : 'secondary')) 
-                                    }}">
-                                        {{ $compra->estado }}
-                                    </span>
-                                </p>
-                            </div>
-                        </div> --}}
+                        
                         <div class="col col-12 col-sm-6 col-md-3 col-lg-2">
                             <div class="form-group">
                                 {{-- Sucursal  --}}
