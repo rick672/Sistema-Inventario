@@ -160,37 +160,7 @@
     <div class="row">
         <!-- Columna principal -->
         <div class="col-lg-8">
-            <!-- Gráfico de inventario -->
-            <div class="card modern-card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <i class="fas fa-chart-bar mr-2"></i>
-                        Inventario por Categoría
-                    </h3>
-                    <div class="card-tools">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                                Este mes
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Esta semana</a>
-                                <a class="dropdown-item" href="#">Este mes</a>
-                                <a class="dropdown-item" href="#">Este trimestre</a>
-                                <a class="dropdown-item" href="#">Este año</a>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="inventoryChart" height="250"></canvas>
-                    </div>
-                </div>
-            </div>
-
+            
             <!-- Compras recientes y acciones rápidas -->
             <div class="row">
                 <div class="col-md-6">
@@ -271,6 +241,37 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico de inventario -->
+            <div class="card modern-card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-chart-bar mr-2"></i>
+                        Inventario por Categoría
+                    </h3>
+                    <div class="card-tools">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                                Este mes
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Esta semana</a>
+                                <a class="dropdown-item" href="#">Este mes</a>
+                                <a class="dropdown-item" href="#">Este trimestre</a>
+                                <a class="dropdown-item" href="#">Este año</a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="inventoryChart" height="250"></canvas>
                     </div>
                 </div>
             </div>

@@ -71,9 +71,9 @@
                                 <th>Proveedor</th>
                                 <th>Fecha de Entrada</th>
                                 <th>Fecha de Vencimiento</th>
-                                <th>Dias restantes</th>
-                                <th>Cantidad Actual</th>
-                                <th>Estado</th>
+                                <th class="text-center">Dias restantes</th>
+                                <th class="text-center">Cantidad Actual</th>
+                                <th class="text-center">Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,9 +85,9 @@
                                     <td>{{ $lote->proveedor->nombre }}</td>
                                     <td>{{ $lote->fecha_entrada }}</td>
                                     <td>{{ $lote->fecha_vencimiento }}</td>
-                                    <td>{{ $lote->days_to_expire }} Dias</td>
-                                    <td>{{ $lote->cantidad_actual }}</td>
-                                    <td>
+                                    <td class="text-center">{{ $lote->days_to_expire }} Dias</td>
+                                    <td class="text-center">{{ $lote->cantidad_actual }}</td>
+                                    <td class="text-center">
                                         @if($lote->is_expired)
                                             <span class="badge badge-danger">Vencido</span>
 
